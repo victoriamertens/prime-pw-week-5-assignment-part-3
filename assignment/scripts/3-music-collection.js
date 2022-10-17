@@ -30,6 +30,20 @@ function showCollection(arrParameter) {
       arrParameter[i].yearPublished
     );
   }
+  return 'showCollection Function Completed';
 }
 
 console.log(showCollection(collection));
+
+function findByArtist(artistString) {
+  let artistArr = [];
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].artist === artistString) {
+      artistArr.push(collection[i]);
+    }
+  }
+  return artistArr;
+}
+
+console.log(findByArtist('Halestorm'));
+console.log(findByArtist('Cheap Trick'));
