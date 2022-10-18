@@ -47,3 +47,23 @@ function findByArtist(artistString) {
 
 console.log(findByArtist('Halestorm'));
 console.log(findByArtist('Cheap Trick'));
+
+//Stretch Goals
+function search(inputParameter) {
+  let finalArr = [];
+  for (let i = 0; i < collection.length; i++) {
+    if (
+      inputParameter.artist === collection[i].artist &&
+      inputParameter.year === collection[i].yearPublished
+    ) {
+      finalArr.push(collection[i]);
+    } else if (inputParameter.artist === '' && inputParameter.year === '') {
+      finalArr.push(collection[i].title);
+    }
+  }
+  return finalArr;
+}
+console.log(collection);
+console.log(search({ artist: 'Halestorm', year: 2022 }));
+console.log(search({ artist: 'Ray Charles', year: 1957 }));
+console.log(search({ artist: '', year: '' }));
