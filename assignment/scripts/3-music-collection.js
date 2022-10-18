@@ -70,8 +70,12 @@ function showCollection(arrParameter) {
       'by',
       arrParameter[i].artist,
       'published in',
-      arrParameter[i].yearPublished
+      arrParameter[i].yearPublished,
+      ':'
     );
+    for (let index = 0; index < arrParameter[i].tracks.length; index++) {
+      console.log(i + 1, '.', arrParameter[i].tracks[index]);
+    }
   }
   return 'showCollection Function Completed';
 }
@@ -92,7 +96,7 @@ console.log(findByArtist('Halestorm'));
 console.log(findByArtist('Cheap Trick'));
 
 //Stretch Goals
-function search(inputParameter) {
+function search(inputParameter, trackName) {
   let finalArr = [];
   let errArr = [];
   for (let i = 0; i < collection.length; i++) {
@@ -108,7 +112,8 @@ function search(inputParameter) {
   for (let i = 0; i < collection.length; i++) {
     if (
       inputParameter.artist === collection[i].artist &&
-      inputParameter.year === collection[i].yearPublished
+      inputParameter.year === collection[i].yearPublished &&
+      collection[i].tracks.indexOf(trackName) >= 0
     ) {
       finalArr.push(collection[i]);
     }
@@ -116,7 +121,13 @@ function search(inputParameter) {
   return finalArr;
 }
 console.log(collection);
-console.log(search({ artist: 'Halestorm', year: 2022 }));
+console.log(search({ artist: 'Halestorm', year: 2022 }, 'Wicked Ways'));
+console.log(
+  search({ artist: 'Florence and the Mchine', year: 2010 }, 'Happiness')
+);
 console.log(search({ artist: 'Ray Charles', year: 1957 }));
 console.log(search());
 console.log(search({}));
+
+// Question, are we creating a search engine that checks for ALL search criteria to match, or only a certain amount?
+//Question, are the search inputs completed objects with the properties?
