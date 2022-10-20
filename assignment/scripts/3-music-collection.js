@@ -1,4 +1,5 @@
 console.log('***** Music Collection *****');
+
 let collection = [];
 
 function addToCollection(titleNew, artistNew, yearPublishedNew, newTracks) {
@@ -12,107 +13,101 @@ function addToCollection(titleNew, artistNew, yearPublishedNew, newTracks) {
   return newCollectionObject;
 }
 
-console.log(
-  addToCollection('Piano Man', 'Billy Joel', 1973, [
-    "Travelin' Prayer",
-    'Piano Man',
-    "Ain't No Crime",
-    "You're My Home",
-  ])
-);
-console.log(
-  addToCollection('Hunky Dory', 'David Bowie', 1971, [
-    'Changes',
-    'Oh! You Pretty Things',
-    'Eight Line Poem',
-    'Life On Mars',
-  ])
-);
-console.log(
-  addToCollection('Greatest Hits', 'Frank Sinatra', 1950, [
-    'Strangers in the Night',
-    'Summer Wind',
-    'It was a Very Good Year',
-    'Somewhere in Your Heart',
-  ])
-);
-console.log(
-  addToCollection('Lungs', 'Florence and the Mchine', 2010, [
-    'Dog Days are over',
-    'RabbitHeart',
-    "Im' not calling you a liar",
-    'Howl',
-  ])
-);
-console.log(
-  addToCollection('Dear Agony', 'Breaking Benjamin', 2009, [
-    'Fade Away',
-    'I will not bow',
-    'Crawl',
-    'Give me a sign',
-  ])
-);
-console.log(
-  addToCollection('Back from the Dead', 'Halestorm', 2022, [
-    'Back from the Dead',
-    'Wicked Ways',
-    'Strange Girl',
-    'Brightside',
-  ])
-);
-console.log(collection);
+addToCollection('Piano Man', 'Billy Joel', 1973, [
+  "Travelin' Prayer: 3:30 ",
+  'Piano Man: 2:15',
+  "Ain't No Crime:4:00",
+  "You're My Home: 2:16",
+]);
 
-function showCollection(arrParameter) {
-  console.log(arrParameter.length);
-  for (let i = 0; i < arrParameter.length; i++) {
+addToCollection('Hunky Dory', 'David Bowie', 1971, [
+  'Changes',
+  'Oh! You Pretty Things',
+  'Eight Line Poem',
+  'Life On Mars',
+]);
+
+addToCollection('Greatest Hits', 'Frank Sinatra', 1950, [
+  'Strangers in the Night',
+  'Summer Wind',
+  'It was a Very Good Year',
+  'Somewhere in Your Heart',
+]);
+
+addToCollection('Lungs', 'Florence and the Mchine', 2010, [
+  'Dog Days are over',
+  'RabbitHeart',
+  "Im' not calling you a liar",
+  'Howl',
+]);
+
+addToCollection('Dear Agony', 'Breaking Benjamin', 2009, [
+  'Fade Away',
+  'I will not bow',
+  'Crawl',
+  'Give me a sign',
+]);
+
+addToCollection('Back from the Dead', 'Halestorm', 2022, [
+  'Back from the Dead',
+  'Wicked Ways',
+  'Strange Girl',
+  'Brightside',
+]);
+
+console.log(collection); //To check what variable information is going into the function
+
+function showCollection(collection) {
+  console.log('Collection Length:', collection.length);
+
+  for (let collectionItem of collection) {
     console.log(
-      arrParameter[i].title,
-      'by',
-      arrParameter[i].artist,
-      'published in',
-      arrParameter[i].yearPublished,
-      ':'
+      `${collectionItem.title} by ${collectionItem.artist} published in: ${collectionItem.yearPublished}` //Used Template literal
     );
-    for (let index = 0; index < arrParameter[i].tracks.length; index++) {
-      console.log(i + 1, '.', arrParameter[i].tracks[index]);
+    let songCounter = 1;
+    for (let song of collectionItem.tracks) {
+      console.log(`${songCounter}. ${song}`); //used Template literal
+      songCounter++;
     }
   }
+
   return 'showCollection Function Completed';
 }
 
-console.log(showCollection(collection));
+console.log(showCollection(collection)); //Testing showCollection Function
 
 function findByArtist(artistString) {
   let artistArr = [];
+
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].artist === artistString) {
       artistArr.push(collection[i]);
     }
   }
+
   return artistArr;
 }
 
-console.log(findByArtist('Halestorm'));
-console.log(findByArtist('Cheap Trick'));
+console.log(findByArtist('Halestorm')); //Test true case
+console.log(findByArtist('Cheap Trick')); //Test false case
 
-//Stretch Goals
-function search(inputParameter, trackName) {
+//*******Stretch Goals*********
+function search(searchObject, trackName) {
   let finalArr = [];
   let errArr = [];
+
   for (let i = 0; i < collection.length; i++) {
     errArr.push(collection[i].title);
   }
-  if (
-    inputParameter === undefined ||
-    Object.keys(inputParameter).length === 0
-  ) {
+
+  if (searchObject === undefined || Object.keys(searchObject).length === 0) {
     return errArr;
   }
 
   for (let i = 0; i < collection.length; i++) {
     if (
-      inputParameter.artist === collection[i].artist &&
-      inputParameter.year === collection[i].yearPublished &&
+      searchObject.artist === collection[i].artist &&
+      searchObject.year === collection[i].yearPublished &&
       collection[i].tracks.indexOf(trackName) >= 0
     ) {
       finalArr.push(collection[i]);
@@ -120,14 +115,16 @@ function search(inputParameter, trackName) {
   }
   return finalArr;
 }
-console.log(collection);
-console.log(search({ artist: 'Halestorm', year: 2022 }, 'Wicked Ways'));
-console.log(
-  search({ artist: 'Florence and the Mchine', year: 2010 }, 'Happiness')
-);
-console.log(search({ artist: 'Ray Charles', year: 1957 }));
-console.log(search());
-console.log(search({}));
+console.log('Starting Collection is:', collection);
+console.log(search({ artist: 'Halestorm', year: 2022 }, 'Wicked Ways')); //Testing ALL criteria present, should return all matching criteria
 
-// Question, are we creating a search engine that checks for ALL search criteria to match, or only a certain amount?
-//Question, are the search inputs completed objects with the properties?
+console.log(
+  'Should return an empty array:',
+  search({ artist: 'Florence and the Machine', year: 2010 }, 'Happiness') //Testing one non-matching criteria
+);
+console.log(
+  'Should return an empty array:',
+  search({ artist: 'Ray Charles', year: 1957 })
+); //Testing no  matching criteria
+console.log('Should return all albums:', search()); //Testing no input
+console.log('Should return all albums:', search({})); //Testing empty object
