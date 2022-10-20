@@ -21,38 +21,38 @@ addToCollection('Piano Man', 'Billy Joel', 1973, [
 ]);
 
 addToCollection('Hunky Dory', 'David Bowie', 1971, [
-  'Changes',
-  'Oh! You Pretty Things',
-  'Eight Line Poem',
-  'Life On Mars',
+  'Changes: 2:30',
+  'Oh! You Pretty Things: 3:11',
+  'Eight Line Poem: 2:10',
+  'Life On Mars: 2:00',
 ]);
 
 addToCollection('Greatest Hits', 'Frank Sinatra', 1950, [
-  'Strangers in the Night',
-  'Summer Wind',
-  'It was a Very Good Year',
-  'Somewhere in Your Heart',
+  'Strangers in the Night: 4:10',
+  'Summer Wind: 5:11',
+  'It was a Very Good Year: 2:30',
+  'Somewhere in Your Heart: 1:00',
 ]);
 
 addToCollection('Lungs', 'Florence and the Mchine', 2010, [
-  'Dog Days are over',
-  'RabbitHeart',
-  "Im' not calling you a liar",
-  'Howl',
+  'Dog Days are over: 1:15',
+  'RabbitHeart: 3:44',
+  "Im' not calling you a liar: 5:34",
+  'Howl: 3:44',
 ]);
 
 addToCollection('Dear Agony', 'Breaking Benjamin', 2009, [
-  'Fade Away',
-  'I will not bow',
-  'Crawl',
-  'Give me a sign',
+  'Fade Away: 4:04',
+  'I will not bow: 5:10',
+  'Crawl: 3:22',
+  'Give me a sign: 3:22',
 ]);
 
 addToCollection('Back from the Dead', 'Halestorm', 2022, [
-  'Back from the Dead',
-  'Wicked Ways',
-  'Strange Girl',
-  'Brightside',
+  'Back from the Dead: 4:11',
+  'Wicked Ways: 3:32',
+  'Strange Girl: 2:42',
+  'Brightside: 3:33',
 ]);
 
 console.log(collection); //To check what variable information is going into the function
